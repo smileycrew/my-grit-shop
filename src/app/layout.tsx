@@ -18,10 +18,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <AppHeader />
-        {children}
-        <AppFooter />
+      <body
+        className={`bg-[#fdfbf7] flex flex-col items-center min-h-screen text-zinc-900 ${inter.className}`}
+      >
+        <div className="w-[1100px]">
+          <AppHeader />
+          {children}
+          <AppFooter />
+        </div>
       </body>
     </html>
   )

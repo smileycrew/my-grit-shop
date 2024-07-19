@@ -1,40 +1,36 @@
-import Link from "next/link"
-
-const routes = [
-  {
-    label: "Home",
-    path: "/",
-  },
-  {
-    label: "About",
-    path: "/about",
-  },
-  {
-    label: "Shop",
-    path: "/shop",
-  },
-  {
-    label: "Account",
-    path: "/account",
-  },
-]
+import { routes } from "@/lib/data"
+import H1 from "./h1"
+import NavItem from "./nav-item"
+import { MagnifyingGlassIcon } from "@radix-ui/react-icons"
+import { Button } from "./ui/button"
 
 export default function AppHeader() {
   return (
-    <header>
-      <div className="flex">
-        <div className="text-center w-full">
-          <h1>Iron Forge Candles</h1>
-        </div>
+    <header className="py-[25px] space-y-3">
+      <div className="grid grid-cols-3">
+        {/* TODO REMOVE THE STYLING WHILE REUSING THE BUTTON AS CHILD */}
+        <Button size="icon">
+          {/* TODO THIS IS GOING TO BE THE POPUP MAYBE??? */}
+          <MagnifyingGlassIcon />
+        </Button>
 
-        <p>Cart</p>
+        {/* TODO FIND A WAY TO REUSE THE NAVITEM HERE */}
+        <H1>Iron Forged Candles</H1>
+
+        {/* TODO THIS IS GOING TO BE THE LINK TO REDIRECT TO CART MAYBE??? */}
+        {/* <Button asChild size="icon">
+          <p className="text-end">
+            <BackpackIcon />
+          </p>
+        </Button> */}
+        <p className="text-end">Cart</p>
       </div>
       <nav>
-        <ul className="flex justify-around">
+        <ul className="flex gap-10 justify-center">
           {routes.map((route) => (
-            <li key={route.path}>
-              <Link href={route.path}>{route.label}</Link>
-            </li>
+            <NavItem key={route.path} route={route}>
+              {route.label}
+            </NavItem>
           ))}
         </ul>
       </nav>
