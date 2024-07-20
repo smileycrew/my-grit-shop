@@ -28,7 +28,7 @@ export default function SaleItemOptions() {
   const [chosenOptionId, setChosenOptionId] = useState(1)
   const [quantity, setQuantity] = useState(1)
 
-  const handleChangeQuantity = (action) => {
+  const handleChangeQuantity = (action: String) => {
     if (action === "add") {
       setQuantity((prev) => prev + 1)
     } else if (action === "subtract") {
@@ -41,7 +41,7 @@ export default function SaleItemOptions() {
       })
     }
   }
-  const handleChooseOption = (optionId) => {
+  const handleChooseOption = (optionId: number) => {
     setChosenOptionId(optionId)
   }
   return (
