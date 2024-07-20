@@ -1,10 +1,10 @@
 import Image from "next/image"
 import { Card, CardContent } from "./ui/card"
 import { Button } from "./ui/button"
-import { Input } from "./ui/input"
 import { ArrowRightIcon, Share2Icon } from "@radix-ui/react-icons"
 import placeholderImg from "../../public/candle-one.png"
 import Link from "next/link"
+import SaleItemOptions from "./sale-item-options"
 
 export default function SaleItem() {
   return (
@@ -35,14 +35,7 @@ export default function SaleItem() {
               </Button>
             </div>
             <p>Shipping details can go here</p>
-            <div className="flex gap-3">
-              <Button>option 1</Button>
-              <Button>option 2</Button>
-              <Button>option 3</Button>
-            </div>
-            {/* TODO POSSIBLY COMBINE THIS INTO 3 COMPONENTS TO CREATE A SINGLE LOOKING UI */}
-            <Input className="bg-white" defaultValue={1} type="number" />
-            <Button>Add to card</Button>
+            <SaleItemOptions />
             <Link className="text-[#0B3471] text-center underline" href="/">
               <small>More payment options???</small>
             </Link>

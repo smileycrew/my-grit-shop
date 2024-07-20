@@ -2,6 +2,7 @@ import { ArrowRightIcon, InstagramLogoIcon } from "@radix-ui/react-icons"
 import { Button } from "./ui/button"
 import { Input } from "./ui/input"
 import SectionBackground from "./section-background"
+import Link from "next/link"
 
 export default function Newsletter() {
   return (
@@ -24,11 +25,16 @@ export default function Newsletter() {
         </Button>
       </div>
 
-      <Button className="bg-purple-700 hover:bg-purple-800">
-        Follow on{" "}
-        <span>
-          <InstagramLogoIcon />
-        </span>
+      <Button asChild className="bg-purple-700 hover:bg-purple-800">
+        <Link
+          className="flex items-center gap-3"
+          href="https://www.instagram.com/"
+        >
+          Follow on
+          <span>
+            <InstagramLogoIcon />
+          </span>
+        </Link>
       </Button>
     </div>
   )

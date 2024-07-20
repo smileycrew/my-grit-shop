@@ -6,7 +6,7 @@ export default function AppFooter() {
       <SectionBackground hexColor="7789A7" />
 
       <small className="self-start text-white/80">
-        Placeholder for the small text this has margin top auto
+        This is a concept website.
       </small>
     </footer>
   )

@@ -19,7 +19,8 @@ export default function Collection() {
 function Item() {
   return (
     <li>
-      <Card className="bg-[#FDFBF7] flex flex-col items-center overflow-hidden text-[#0B3471]">
+      {/* TODO I AM NOT A BIG FAN OF THE BORDER NONE */}
+      <Card className="bg-[#FDFBF7] border-none flex flex-col items-center overflow-hidden text-[#0B3471]">
         <Image alt="candle" height={250} src={placeholderImg} width={250} />
         <div className="py-5 text-center">
           <p className="font-semibold">Name of candle</p>
