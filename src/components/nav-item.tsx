@@ -16,8 +16,8 @@ export default function NavItem({ children, route }: NavItemProps) {
   return (
     <li>
       <Link
-        className={cn("border-[#0B3471BF] hover:border-b text-[#0B3471BF]", {
-          "border-b hover:border-b-2 text-[#0B3471]":
+        className={cn("border-[#0B3471] hover:border-b hover:text-[#0B3471]", {
+          "border-b font-semibold hover:border-b-2 text-[#0B3471]":
             route.path === activePathname,
         })}
         href={route.path}

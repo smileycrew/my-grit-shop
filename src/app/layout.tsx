@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`bg-[#fdfbf7] flex flex-col items-center min-h-screen text-zinc-900 ${inter.className}`}
+        className={`flex flex-col items-center min-h-screen text-[#7789A7] -z-[999] ${inter.className}`}
       >
         <div className="w-[1100px]">
           <AppHeader />
