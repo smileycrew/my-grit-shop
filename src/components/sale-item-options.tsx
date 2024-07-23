@@ -4,6 +4,7 @@ import { MinusIcon, PlusIcon } from "@radix-ui/react-icons"
 import { Button } from "./ui/button"
 import { useState } from "react"
 import { cn } from "@/lib/utils"
+import QuantityButtonGroup from "./quantity-button-group"
 
 const purchaseOptions = [
   {
@@ -28,6 +29,7 @@ export default function SaleItemOptions() {
   const [chosenOptionId, setChosenOptionId] = useState(1)
   const [quantity, setQuantity] = useState(1)
 
+  // TODO ADD A STRICT TYPE INSTEAD OF A GENERAL STRING TYPE
   const handleChangeQuantity = (action: String) => {
     if (action === "add") {
       setQuantity((prev) => prev + 1)
@@ -64,22 +66,9 @@ export default function SaleItemOptions() {
         ))}
       </ul>
       {/* TODO POSSIBLY COMBINE THIS INTO 3 COMPONENTS TO CREATE A SINGLE LOOKING UI */}
-      <div className="border flex items-center rounded-md self-start text-center">
-        <Button
-          className="bg-transparent border-none hover:bg-transparent shadow-none text-black/30"
-          disabled={quantity === 1 || quantity < 1}
-          onClick={() => handleChangeQuantity("subtract")}
-        >
-          <MinusIcon />
-        </Button>
-        <p className="w-[40px]">{quantity}</p>
-        <Button
-          className="bg-transparent border-none hover:bg-transparent shadow-none text-black"
-          onClick={() => handleChangeQuantity("add")}
-        >
-          <PlusIcon />
-        </Button>
-      </div>
+
+      <QuantityButtonGroup quantity={quantity} onClick={handleChangeQuantity} />
+
       <Button>Add to card</Button>
     </>
   )
