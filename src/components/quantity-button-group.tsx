@@ -1,7 +1,15 @@
 import { MinusIcon, PlusIcon } from "@radix-ui/react-icons"
 import { Button } from "./ui/button"
 
-export default function QuantityButtonGroup({ quantity, onClick }) {
+type TQuantityButtonGroupProps = {
+  quantity: number
+  onClick: (action: "subtract" | "add") => void
+}
+
+export default function QuantityButtonGroup({
+  quantity,
+  onClick,
+}: TQuantityButtonGroupProps) {
   console.log("component")
   return (
     <div className="border flex items-center rounded-md self-start text-center">
