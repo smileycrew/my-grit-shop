@@ -3,6 +3,7 @@ import { Inter } from "next/font/google"
 import "../styles/globals.css"
 import AppHeader from "@/components/app-header"
 import AppFooter from "@/components/app-footer"
+import CandleContextProvider from "@/contexts/candle-context"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -23,7 +24,7 @@ export default function RootLayout({
       >
         <div className="w-[1100px]">
           <AppHeader />
-          {children}
+          <CandleContextProvider>{children}</CandleContextProvider>
           <AppFooter />
         </div>
       </body>

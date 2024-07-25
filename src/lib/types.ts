@@ -5,3 +5,11 @@ export type TRoute = {
   label: String
   path: Url
 }
+
+export type TCandle = {
+  id: number
+  name: string
+  price: number
+}
+
+export type TAction = "add" | "edit" | "delete"

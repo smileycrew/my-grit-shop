@@ -10,7 +10,6 @@ export default function QuantityButtonGroup({
   quantity,
   onClick,
 }: TQuantityButtonGroupProps) {
-  console.log("component")
   return (
     <div className="border flex items-center rounded-md self-start text-center">
       <Button

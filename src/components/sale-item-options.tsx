@@ -1,6 +1,5 @@
 "use client"
 
-import { MinusIcon, PlusIcon } from "@radix-ui/react-icons"
 import { Button } from "./ui/button"
 import { useState } from "react"
 import { cn } from "@/lib/utils"
