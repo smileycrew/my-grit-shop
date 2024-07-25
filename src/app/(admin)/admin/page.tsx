@@ -1,5 +1,6 @@
 import CandleButton from "@/components/candle-button"
 import CandleList from "@/components/candle-list"
+import { Button } from "@/components/ui/button"
 
 export default function Page() {
   return (

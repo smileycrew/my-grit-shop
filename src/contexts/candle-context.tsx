@@ -1,17 +1,24 @@
 "use client"
 
 import { initialItems } from "@/lib/data"
-import { TCandle } from "@/lib/types"
+import { TCandleEssentials } from "@/lib/types"
+import { TCandleForm } from "@/lib/validations"
 import { createContext, useState } from "react"
 
+const randomNumber = Math.floor(Math.random())
+
 type TCandleContext = {
-  candles: TCandle[]
+  candles: TCandleForm[]
   candleCount: number
-  handleAddNewCandle: (newCandleData: TCandle) => void
+  candleOfTheDay: TCandleForm
+  handleAddNewCandle: (newCandleData: TCandleEssentials) => void
   handleChangeSelectedCandleId: (candleId: number) => void
   handleDeleteCandle: (candleId: number) => void
-  handleEditCandle: (updatedCandleData: TCandle) => void
-  selectedCandle: TCandle | undefined
+  handleEditCandle: (
+    candleId: number,
+    updatedCandleData: TCandleEssentials
+  ) => void
+  selectedCandle: TCandleForm | undefined
 }
 
 type TCandleContextProviderProps = {
@@ -23,18 +30,18 @@ export const CandleContext = createContext<TCandleContext | null>(null)
 export default function CandleContextProvider({
   children,
 }: TCandleContextProviderProps) {
+  // TODO WHEN USING PRISMA THIS SHOULD RETURN THE INVENTORY FOR THE CANDLE
   const [candles, setCandles] = useState(initialItems)
   const [selectedCandleId, setSelectedCandleId] = useState(0)
 
   const candleCount = candles.length
+  const candleOfTheDay = candles[randomNumber * candleCount]
   const selectedCandle = candles.find(
     (candle) => candle.id === selectedCandleId
   )
 
-  const handleAddNewCandle = (newCandleData: TCandle) => {
-    newCandleData.id = Date.now()
-
-    setCandles([...candles, newCandleData])
+  const handleAddNewCandle = (newCandleData: TCandleEssentials) => {
+    setCandles([...candles, { ...newCandleData, id: Date.now() }])
   }
   // TODO I HAVE NOT USED THIS YET
   const handleChangeSelectedCandleId = (candleId: number) => {
@@ -47,9 +54,12 @@ export default function CandleContextProvider({
     setCandles(newCandlesList)
   }
 
-  const handleEditCandle = (updatedCandleData: TCandle) => {
+  const handleEditCandle = (
+    candleId: number,
+    updatedCandleData: TCandleEssentials
+  ) => {
     const updatedCandleList = candles.map((candle) => {
-      if (candle.id === updatedCandleData.id) {
+      if (candle.id === candleId) {
         return {
           id: candle.id,
           name: updatedCandleData.name,
@@ -67,6 +77,7 @@ export default function CandleContextProvider({
       value={{
         candles,
         candleCount,
+        candleOfTheDay,
         handleAddNewCandle,
         handleChangeSelectedCandleId,
         handleDeleteCandle,

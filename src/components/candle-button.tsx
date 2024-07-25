@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from "react"
+import { useState } from "react"
 import {
   Dialog,
   DialogContent,
@@ -11,13 +11,14 @@ import {
 import { Button } from "./ui/button"
 import { Pencil1Icon, PlusIcon, TrashIcon } from "@radix-ui/react-icons"
 import CandleForm from "./candle-form"
-import { TAction, TCandle } from "@/lib/types"
+import { TAction } from "@/lib/types"
 import { DialogDescription } from "@radix-ui/react-dialog"
+import { TCandleForm } from "@/lib/validations"
 
 type TCandleButtonProps = {
   action: TAction
   // TODO FIND OUT IF MAKING THIS OPTIONAL IS THE BEST WAY
-  chosenCandle?: TCandle | null
+  chosenCandle?: TCandleForm
   onClick?: () => void
 }
 
@@ -52,7 +53,7 @@ export default function CandleButton({
 
         <CandleForm
           action={action}
-          chosenCandle={chosenCandle || undefined}
+          chosenCandle={chosenCandle}
           onFormSubmit={() => setIsFormOpen(false)}
         />
       </DialogContent>

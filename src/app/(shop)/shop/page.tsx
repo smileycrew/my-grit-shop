@@ -1,24 +1,22 @@
-"use client"
-
+import CandleCount from "@/components/candle-count"
 import Collection from "@/components/collection"
 import PageTitle from "@/components/page-title"
 import SectionBackground from "@/components/section-background"
-import { useCandleContext } from "@/lib/hooks"
 
 export default function Page() {
-  const { candles, candleCount } = useCandleContext()
-
   return (
     <>
-      <div className="flex flex-col items-center justify-center py-10 relative">
+      <div className="flex flex-col items-center justify-between py-10 relative">
         <SectionBackground hexColor="FDFBF7" />
 
-        <PageTitle className="self-start">Products</PageTitle>
+        <div className="flex justify-between w-full">
+          <PageTitle>Products</PageTitle>
 
-        <p className="self-end">{candleCount} products</p>
+          <CandleCount />
+        </div>
       </div>
 
-      <Collection candles={candles} />
+      <Collection />
     </>
   )
 }

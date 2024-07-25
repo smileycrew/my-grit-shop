@@ -20,9 +20,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`flex flex-col items-center min-h-screen text-[#7789A7] -z-[999] ${inter.className}`}
+        className={`flex justify-center h-screen text-[#7789A7] -z-[999] ${inter.className}`}
       >
-        <div className="w-[1100px]">
+        <div className="flex flex-col w-[1100px]">
           <AppHeader />
           <CandleContextProvider>{children}</CandleContextProvider>
           <AppFooter />

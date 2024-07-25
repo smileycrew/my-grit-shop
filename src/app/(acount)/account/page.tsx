@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button"
 
 export default function Page() {
   return (
-    <div className="h-screen">
+    <>
       <div className="py-5">
         <PageTitle>Account</PageTitle>
       </div>
@@ -12,6 +12,6 @@ export default function Page() {
         <p>Logged in as...</p>
         <Button>Log out</Button>
       </div>
-    </div>
+    </>
   )
 }

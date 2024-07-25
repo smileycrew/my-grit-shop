@@ -1,3 +1,21 @@
+export const initialCart = [
+  {
+    id: 1,
+    candleId: 1,
+    quantity: 3,
+  },
+  {
+    id: 2,
+    candleId: 2,
+    quantity: 2,
+  },
+  {
+    id: 3,
+    candleId: 3,
+    quantity: 7,
+  },
+]
+
 export const initialItems = [
   {
     id: 1,

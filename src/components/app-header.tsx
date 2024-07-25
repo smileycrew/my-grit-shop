@@ -1,43 +1,29 @@
-import { routes } from "@/lib/data"
 import H1 from "./h1"
-import NavItem from "./nav-item"
 import SectionBackground from "./section-background"
 import Link from "next/link"
 import SearchDialog from "./search-dialog"
+import { BackpackIcon } from "@radix-ui/react-icons"
+import Nav from "./nav"
 
 export default function AppHeader() {
   return (
-    <header className="flex flex-col items-center py-[25px] relative space-y-3">
-      <SectionBackground hexColor="FDFBF7" />
-      <div className="grid grid-cols-3 w-full">
-        <div className="self-start">
-          <SearchDialog />
-        </div>
+    <header className="flex flex-col py-[25px] space-y-3">
+      {/* TODO FIX THIS BACKGROUND SECTION COMPONENT */}
+      {/* <SectionBackground hexColor="FDFBF7" /> */}
 
-        {/* TODO FIND A WAY TO REUSE THE NAVITEM HERE */}
-        <Link href="/">
-          <H1>Iron Forged Candles</H1>
-        </Link>
+      <div className="flex justify-between">
+        <SearchDialog />
 
-        {/* TODO THIS IS GOING TO BE THE LINK TO REDIRECT TO CART MAYBE??? */}
-        {/* <Button asChild size="icon">
-          <p className="text-end">
-            <BackpackIcon />
-          </p>
-        </Button> */}
-        <Link className="text-end" href="/cart">
-          Cart
+        <H1 className="text-center">
+          <Link href="/">Iron Forged Candles</Link>
+        </H1>
+
+        <Link className="self-center" href="/cart">
+          <BackpackIcon />
         </Link>
       </div>
-      <nav>
-        <ul className="flex gap-10 justify-center">
-          {routes.map((route) => (
-            <NavItem key={route.path} route={route}>
-              {route.label}
-            </NavItem>
-          ))}
-        </ul>
-      </nav>
+
+      <Nav />
     </header>
   )
 }

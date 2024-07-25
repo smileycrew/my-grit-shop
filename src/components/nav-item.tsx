@@ -6,11 +6,10 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 
 type NavItemProps = {
-  children: React.ReactNode
   route: TRoute
 }
 
-export default function NavItem({ children, route }: NavItemProps) {
+export default function NavItem({ route }: NavItemProps) {
   const activePathname = usePathname()
 
   return (
@@ -22,7 +21,7 @@ export default function NavItem({ children, route }: NavItemProps) {
         })}
         href={route.path}
       >
-        {children}
+        {route.label}
       </Link>
     </li>
   )

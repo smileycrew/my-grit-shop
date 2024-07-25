@@ -1,15 +1,8 @@
 "use client"
 
-import { TCandle } from "@/lib/types"
+import { TCandleForm } from "@/lib/validations"
 import CandleButton from "./candle-button"
 import { useCandleContext } from "@/lib/hooks"
-
-type TCandleListProps = {
-  candles: TCandle[]
-  handleChangeSelectedCandleId: (candleId: number) => void
-  onDelete: (candleId: number) => void
-  onEdit: (updatedCandleDate: TCandle) => void
-}
 
 export default function CandleList() {
   const { candles, handleDeleteCandle } = useCandleContext()
@@ -28,7 +21,7 @@ export default function CandleList() {
 }
 
 type TCandleItemProps = {
-  candle: TCandle
+  candle: TCandleForm
   onClick: () => void
 }
 
@@ -39,7 +32,7 @@ function CandleItem({ candle, onClick }: TCandleItemProps) {
       key={candle.id}
     >
       <p>{candle.name}</p>
-      <p>{candle.price}</p>
+      <p>${candle.price.toFixed(2)}</p>
 
       <CandleButton action="edit" chosenCandle={candle} />
 

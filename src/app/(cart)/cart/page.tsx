@@ -6,8 +6,10 @@ import { TrashIcon } from "@radix-ui/react-icons"
 import { Button } from "@/components/ui/button"
 import QuantityButtonGroup from "@/components/quantity-button-group"
 import { useState } from "react"
+import { initialCart } from "@/lib/data"
 
 export default function Page() {
+  const [cartItems, setCartItems] = useState(initialCart)
   const [quantity, setQuantity] = useState(1)
 
   // TODO ADD A STRICT TYPE INSTEAD OF A GENERAL STRING TYPE
@@ -35,33 +37,37 @@ export default function Page() {
           <p>Total</p>
         </div>
 
-        <div className="grid grid-cols-4 items-center py-5">
-          <Image
-            alt="candle"
-            className="border rounded-md"
-            height={100}
-            src={placeholderImg}
-            width={100}
-          />
+        <ul className="py-5 space-y-3">
+          {cartItems.map((item) => (
+            <li className="grid grid-cols-4 items-center" key={item.id}>
+              <Image
+                alt="candle"
+                className="border rounded-md"
+                height={100}
+                src={placeholderImg}
+                width={100}
+              />
 
-          <div className="flex flex-col">
-            <p>Name</p>
-            <p>Price</p>
-            <p>Size</p>
-          </div>
+              <div className="flex flex-col">
+                <p>Name</p>
+                <p>Price</p>
+                <p>Size</p>
+              </div>
 
-          <div className="flex items-center gap-3">
-            <QuantityButtonGroup
-              quantity={quantity}
-              onClick={handleChangeQuantity}
-            />
-            <Button size="icon">
-              <TrashIcon />
-            </Button>
-          </div>
+              <div className="flex items-center gap-3">
+                <QuantityButtonGroup
+                  quantity={quantity}
+                  onClick={handleChangeQuantity}
+                />
+                <Button size="icon">
+                  <TrashIcon />
+                </Button>
+              </div>
 
-          <p className="text-end">$3.99</p>
-        </div>
+              <p className="text-end">$3.99</p>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   )
